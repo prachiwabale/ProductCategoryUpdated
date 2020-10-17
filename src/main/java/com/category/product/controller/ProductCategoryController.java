@@ -55,8 +55,8 @@ public class ProductCategoryController {
 
 	@GetMapping(ProductAPI.GET_ALL_PRODUCT_BY_CATEGORY_CODE)
 	public ResponseEntity<ResponseDto> getAllProductByCategoryCode(@RequestParam("categoryCode") Integer categoryCode) {
-		List<String> listOfString = productCategoryFacadInt.getAllProductByCategoryCode(categoryCode);
-		responseDto.setData(listOfString);
+		List<String> listofString = productCategoryFacadInt.getAllProductByCategoryCode(categoryCode);
+		responseDto.setData(listofString);
 		return new ResponseEntity<ResponseDto>(responseDto, HttpStatus.OK);
 	}
 
