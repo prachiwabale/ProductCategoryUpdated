@@ -1,11 +1,8 @@
 package com.category.product.facadeImpl;
 
-import java.util.Set;
+
+
 import javax.annotation.Resource;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

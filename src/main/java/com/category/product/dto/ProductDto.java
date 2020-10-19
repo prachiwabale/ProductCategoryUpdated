@@ -1,6 +1,5 @@
 package com.category.product.dto;
 
-import java.util.List;
 
 public class ProductDto {
 
@@ -9,10 +8,6 @@ public class ProductDto {
 	private String productName;
 
 	private Double productPrice;
-
-	private Integer categoryCode;
-
-	private List<Integer> categoryCodeList;
 
 	private Boolean isActive;
 
@@ -46,22 +41,6 @@ public class ProductDto {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
-	}
-
-	public Integer getCategoryCode() {
-		return categoryCode;
-	}
-
-	public void setCategoryCode(Integer categoryCode) {
-		this.categoryCode = categoryCode;
-	}
-
-	public List<Integer> getCategoryCodeList() {
-		return categoryCodeList;
-	}
-
-	public void setCategoryCodeList(List<Integer> categoryCodeList) {
-		this.categoryCodeList = categoryCodeList;
 	}
 
 }

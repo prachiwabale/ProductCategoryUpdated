@@ -1,15 +1,12 @@
 package com.category.product.entity;
 
 import java.util.Calendar;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,7 +14,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity(name = "ProductEntity")
-@Table(name = "tbl_product_entity")
+@Table(name = "tbl_product")
 public class ProductEntity implements ICoreEntity {
 
 	/**
@@ -25,6 +22,8 @@ public class ProductEntity implements ICoreEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_product_SEQ")
+	@SequenceGenerator(name = "tbl_product_SEQ", sequenceName = "tbl_product_sequence", allocationSize = 1)
 	@Column(name = "product_code", nullable = false, unique = false)
 	private Integer productCode;
 
@@ -36,9 +35,11 @@ public class ProductEntity implements ICoreEntity {
 	@Column(name = "product_price")
 	private Double productPrice;
 
-	@NotNull(message = "category name can not be null")
-	@Column(name = "category_code")
-	private Integer categorytCode;
+	/*
+	 * @NotNull(message = "category name can not be null")
+	 * 
+	 * @Column(name = "category_code") private Integer categorytCode;
+	 */
 
 	@Column(name = "is_active")
 	private Boolean isActive;
@@ -65,14 +66,6 @@ public class ProductEntity implements ICoreEntity {
 
 	public Double getProductPrice() {
 		return productPrice;
-	}
-
-	public Integer getCategorytCode() {
-		return categorytCode;
-	}
-
-	public void setCategorytCode(Integer categorytCode) {
-		this.categorytCode = categorytCode;
 	}
 
 	public void setProductPrice(Double productPrice) {

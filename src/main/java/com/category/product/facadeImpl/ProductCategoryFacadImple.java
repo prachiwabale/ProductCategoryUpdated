@@ -12,27 +12,25 @@ import com.category.product.daoInt.ProductCategoryDaoInt;
 import com.category.product.dto.CategoryDto;
 import com.category.product.dto.ProductDto;
 import com.category.product.entity.CategoryEntity;
-import com.category.product.entity.ICoreEntity;
 import com.category.product.entity.ProductCategoryMapping;
 import com.category.product.entity.ProductEntity;
 import com.category.product.facadeInt.ProductCategoryFacadInt;
 
 @Transactional
 @Component("ProductCategoryFacadImple")
-public class ProductCategoryFacadImple extends AbstractFacade<ICoreEntity> implements ProductCategoryFacadInt {
-
-	@Autowired
-	private ProductCategoryDaoInt productCategoryDaoInt;
+public class ProductCategoryFacadImple implements ProductCategoryFacadInt {
 
 	@Autowired
 	private ProductCategoryConvertor productCategoryConvertor;
+
+	@Autowired
+	private ProductCategoryDaoInt productCategoryDaoInt;
 
 	@Override
 	public Integer addCategoryDetails(CategoryDto categoryDto) {
 		CategoryEntity categoryEntity = productCategoryConvertor.categoryDtoConvertToCategoryEntity(categoryDto);
 		productCategoryDaoInt.add(categoryEntity);
 		return categoryEntity.getCategoryCode();
-
 	}
 
 	@Override
@@ -40,6 +38,7 @@ public class ProductCategoryFacadImple extends AbstractFacade<ICoreEntity> imple
 		ProductEntity productEntity = productCategoryConvertor.productDtoConvertToProductEntity(productDto);
 		productCategoryDaoInt.add(productEntity);
 		return productEntity.getProductCode();
+
 	}
 
 	@Override
@@ -47,13 +46,12 @@ public class ProductCategoryFacadImple extends AbstractFacade<ICoreEntity> imple
 		ProductCategoryMapping productCategoryMapping = productCategoryConvertor
 				.convertProductMappingDtoToProductMappingEntity(categoryCode, productCode);
 		productCategoryDaoInt.add(productCategoryMapping);
-
 	}
 
 	@Override
 	public List<String> getAllProductByCategoryCode(Integer categoryCode) {
-		List<String> listOfString = productCategoryDaoInt.getAllProductByCategoryCode(categoryCode);
-		return listOfString;
+		List<String> productList = productCategoryDaoInt.getAllProductByCategoryCode(categoryCode);
+		return productList;
 	}
 
 	@Override
